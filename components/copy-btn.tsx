@@ -30,7 +30,7 @@ const CopyBtn = ({ text }: { text: string }) => {
           <TooltipTrigger asChild>
             <button
               onClick={() => copyToClipboard(text)}
-              className="text-slate-50 absolute p-2 right-0 top-0"
+              className="text-slate-50 absolute p-2 right-2 top-1/2 transform -translate-y-1/2"
             >
               <Clipboard />
             </button>

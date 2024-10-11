@@ -4,7 +4,8 @@ import React from "react";
 import { db } from "@/db";
 import { projects } from "@/db/schema";
 import { auth, currentUser } from "@clerk/nextjs/server";
-
+import { eq } from "drizzle-orm";
+import ProjectsList from "./projects-list";
 export default async function Page() {
   const { userId } = auth();
   const user = await currentUser();
@@ -16,6 +17,7 @@ export default async function Page() {
   return (
     <div>
       <NewProjButton />
+      <ProjectsList projects={allProjects} />
     </div>
   );
 }
