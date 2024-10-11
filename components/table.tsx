@@ -56,9 +56,6 @@ function Table(props: { data: Feedback[] }) {
         }}
       />
       <hr />
-      <div>
-        <button onClick={() => rerender()}>Force Rerender</button>
-      </div>
     </>
   );
 }
@@ -212,11 +209,6 @@ function MyTable({
           ))}
         </select>
       </div>
-      <div>
-        Showing {table.getRowModel().rows.length.toLocaleString()} of{" "}
-        {table.getRowCount().toLocaleString()} Rows
-      </div>
-      <pre>{JSON.stringify(table.getState().pagination, null, 2)}</pre>
     </div>
   );
 }
