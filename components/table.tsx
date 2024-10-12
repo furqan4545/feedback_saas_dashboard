@@ -17,12 +17,16 @@ import {
 
 import { InferSelectModel } from "drizzle-orm";
 import { projects, feedbacks } from "@/db/schema";
+import {
+  ChevronLeft,
+  ChevronRight,
+  ChevronsLeft,
+  ChevronsRight,
+} from "lucide-react";
 
 type Feedback = InferSelectModel<typeof feedbacks>;
 
 function Table(props: { data: Feedback[] }) {
-  const rerender = React.useReducer(() => ({}), {})[1];
-
   const columns = React.useMemo<ColumnDef<Feedback>[]>(
     () => [
       {
@@ -42,6 +46,9 @@ function Table(props: { data: Feedback[] }) {
         accessorKey: "message",
         header: () => "Message",
         footer: (props) => props.column.id,
+        size: 400,
+        minSize: 200,
+        maxSize: 600,
       },
     ],
     []
@@ -89,15 +96,19 @@ function MyTable({
   });
 
   return (
-    <div className="p-2">
+    <div className="p-2 mt-5">
       <div className="h-2" />
-      <table>
+      <table className="w-full">
         <thead>
           {table.getHeaderGroups().map((headerGroup) => (
-            <tr key={headerGroup.id}>
+            <tr key={headerGroup.id} className="border-b border-slate-400 pb-2">
               {headerGroup.headers.map((header) => {
                 return (
-                  <th key={header.id} colSpan={header.colSpan}>
+                  <th
+                    key={header.id}
+                    colSpan={header.colSpan}
+                    className="text-left bg-gray-100 rounded-t-md p-4"
+                  >
                     <div
                       {...{
                         className: header.column.getCanSort()
@@ -115,7 +126,7 @@ function MyTable({
                         desc: " 🔽",
                       }[header.column.getIsSorted() as string] ?? null}
                       {header.column.getCanFilter() ? (
-                        <div>
+                        <div className="mt-2">
                           <Filter column={header.column} table={table} />
                         </div>
                       ) : null}
@@ -132,7 +143,11 @@ function MyTable({
               <tr key={row.id}>
                 {row.getVisibleCells().map((cell) => {
                   return (
-                    <td key={cell.id}>
+                    <td
+                      key={cell.id}
+                      className="p-4 border-b border-gray-200"
+                      style={{ width: cell.column.getSize() }}
+                    >
                       {flexRender(
                         cell.column.columnDef.cell,
                         cell.getContext()
@@ -148,34 +163,34 @@ function MyTable({
       <div className="h-2" />
       <div className="flex items-center gap-2">
         <button
-          className="border rounded p-1"
+          className="border rounded p-1 bg-gray-50 cursor-pointer"
           onClick={() => table.firstPage()}
           disabled={!table.getCanPreviousPage()}
         >
-          {"<<"}
+          <ChevronsLeft className="w-4 h-4" />
         </button>
         <button
-          className="border rounded p-1"
+          className="border rounded p-1 bg-gray-50 cursor-pointer"
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
         >
-          {"<"}
+          <ChevronLeft className="w-4 h-4" />
         </button>
         <button
-          className="border rounded p-1"
+          className="border rounded p-1 bg-gray-50 cursor-pointer"
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
         >
-          {">"}
+          <ChevronRight className="w-4 h-4" />
         </button>
         <button
-          className="border rounded p-1"
+          className="border rounded p-1 bg-gray-50 cursor-pointer"
           onClick={() => table.lastPage()}
           disabled={!table.getCanNextPage()}
         >
-          {">>"}
+          <ChevronsRight className="w-4 h-4" />
         </button>
-        <span className="flex items-center gap-1">
+        <span className="flex items-center gap-1 p-1 bg-gray-50">
           <div>Page</div>
           <strong>
             {table.getState().pagination.pageIndex + 1} of{" "}
@@ -255,7 +270,7 @@ function Filter({
     </div>
   ) : (
     <input
-      className="w-36 border shadow rounded"
+      className="w-36 border shadow rounded p-1 text-slate-900 font-thin"
       onChange={(e) => column.setFilterValue(e.target.value)}
       onClick={(e) => e.stopPropagation()}
       placeholder={`Search...`}
