@@ -15,6 +15,7 @@ export const feedbacks = pgTable("feedbacks", {
   userName: varchar("user_name"),
   userEmail: varchar("user_email"),
   message: varchar("message"),
+  rating: integer("rating"),
 });
 
 // Now we have two tables, projects and feedbacks. Now we need to create a relation between them.

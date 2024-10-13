@@ -23,6 +23,7 @@ import {
   ChevronsLeft,
   ChevronsRight,
 } from "lucide-react";
+import Ratings from "./ratings";
 
 type Feedback = InferSelectModel<typeof feedbacks>;
 
@@ -40,6 +41,18 @@ function Table(props: { data: Feedback[] }) {
         id: "userEmail",
         cell: (info) => info.getValue(),
         header: () => <span>Email</span>,
+        footer: (props) => props.column.id,
+      },
+      {
+        accessorFn: (row) => row.rating,
+        id: "rating",
+        cell: (info) =>
+          info.getValue() == null ? (
+            <span className="italic">N/A</span>
+          ) : (
+            <Ratings rating={info.getValue() as number} count={5} />
+          ),
+        header: () => <span>Rating</span>,
         footer: (props) => props.column.id,
       },
       {
@@ -107,7 +120,7 @@ function MyTable({
                   <th
                     key={header.id}
                     colSpan={header.colSpan}
-                    className="text-left bg-gray-100 rounded-t-md p-4"
+                    className="text-left bg-gray-100 p-4"
                   >
                     <div
                       {...{
@@ -253,9 +266,9 @@ function Filter({
           ])
         }
         placeholder={`Min`}
-        className="w-24 border shadow rounded"
+        className="w-24 border shadow rounded font-thin p-1"
       />
-      <input
+      {/* <input
         type="number"
         value={(columnFilterValue as [number, number])?.[1] ?? ""}
         onChange={(e) =>
@@ -266,7 +279,7 @@ function Filter({
         }
         placeholder={`Max`}
         className="w-24 border shadow rounded"
-      />
+      /> */}
     </div>
   ) : (
     <input
