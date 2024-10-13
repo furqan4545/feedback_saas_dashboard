@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Feedback SaaS - Open Source and Free to Use
+
+## Overview
+
+This is an open-source feedback collection tool, built with the inspiration of empowering individuals and teams to gather meaningful insights effortlessly. Leveraging modern technologies like Next.js, TypeScript and a powerful UI component library, this project aims to make feedback collection simple, customizable, and impactful.
+
+The code is completely open source, and the tool is entirely free for anyone to use. Feel free to fork, modify, and adapt it to your needs.
+
+## Vision
+
+My vision for this project and others like it is simple: **Eliminate poverty from the face of the earth**. By building tools that maximize human potential and output, I aim to ensure that everyone's plate is filled, and everyone has the opportunity to thrive.
+
+This project is a small step in my mission of creating great tools to help people improve productivity and collaboration.
+
+## Support My Mission
+
+I would highly appreciate your support in my mission of building impactful tools. Whether it's through buying the paid subscription, sharing the project, or simply spreading the word, your support can make a difference.
+
+If you find value in this tool, please consider supporting me by starring the repo, sharing it with others, or making a donation. Together, we can build a future where no one is left behind.
+
+## Features
+
+- Collect feedback easily through customizable forms.
+- Open-source, free, and simple to deploy.
+- Built using modern web technologies.
 
 ## Getting Started
 
-First, run the development server:
+Visit [http://localhost:3000](http://localhost:3000) to use the application without worrying about self hosting. OR 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/feedback-saas.git
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+   ```bash
+   cd feedback-saas
+   npm install
+   ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Run the development server:
+   ```bash
+   npm run dev
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Contributing
 
-## Learn More
+Contributions are welcome! If you have ideas, suggestions, or improvements, feel free to create a pull request or open an issue.
 
-To learn more about Next.js, take a look at the following resources:
+## License
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Connect with Me
 
-## Deploy on Vercel
+If you want to stay updated or share your thoughts:
+- [LinkedIn](https://www.linkedin.com/in/iamfurqanalii/)
+- [Twitter](https://x.com/iamfurqanalii)
+- [Email](hello@transpify.com)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Together, we can **make a difference** and create a world of opportunities for everyone. Thank you for being part of this journey.
