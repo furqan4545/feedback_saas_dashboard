@@ -1,7 +1,7 @@
 import { db } from "@/db";
 import { projects as dbProject } from "@/db/schema";
 import { eq } from "drizzle-orm";
-import { ChevronLeft, Globe } from "lucide-react";
+import { ChevronLeft, Code, Globe } from "lucide-react";
 import Link from "next/link";
 import Table from "@/components/table";
 
@@ -38,15 +38,24 @@ async function page({ params }: { params: { projectId: string } }) {
             {project?.description}
           </h2>
         </div>
-        {project.url ? (
+        <div className="flex flex-col">
+          {project.url ? (
+            <Link
+              className="underline text-indigo-700 flex items-center"
+              href={project?.url}
+            >
+              <Globe className="w-4 h-4 mr-1" />
+              <span className="text-lg">Visit site</span>
+            </Link>
+          ) : null}
           <Link
-            className="underline text-indigo-700 flex items-center"
-            href={project?.url}
+            href={`/projects/${project.id}/instructions`}
+            className="underline text-indigo-700 flex items-center mt-2"
           >
-            <Globe className="w-4 h-4 mr-1" />
-            <span className="text-lg">Visit site</span>
+            <Code className="w-5 h-5 mr-1" />
+            <span className="text-lg">Embed code</span>
           </Link>
-        ) : null}
+        </div>
       </div>
       <div>
         <Table data={project.feedbacks} />
