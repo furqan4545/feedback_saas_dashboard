@@ -26,7 +26,7 @@ If you find value in this tool, please consider supporting me by starring the re
 
 ## Getting Started
 
-Visit [http://localhost:3000](http://localhost:3000) to use the application without worrying about self hosting. OR 
+Visit [https://feedbek.com](https://feedbek.com) to use the application without worrying about self hosting. OR 
 
 1. Clone the repository:
    ```bash
