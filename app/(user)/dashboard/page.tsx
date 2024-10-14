@@ -20,8 +20,6 @@ export default async function Page() {
     .from(projects)
     .where(eq(projects.userId, userId));
 
-  const subscribed = await getSubscription({ userId });
-
   const projectCount = userProjects.length;
   const canCreateNewProject = projectCount < maxFreeProjects;
 

@@ -1,7 +1,6 @@
 import React from "react";
 
 import CopyBtn from "@/components/copy-btn";
-import Script from "next/script";
 
 const Instructions = ({
   params,
