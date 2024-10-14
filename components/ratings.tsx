@@ -1,5 +1,6 @@
 import { Star } from "lucide-react";
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export default function Ratings({
   rating,
   count,

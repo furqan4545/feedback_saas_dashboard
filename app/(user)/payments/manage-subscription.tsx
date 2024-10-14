@@ -7,6 +7,7 @@ import { Loader2 } from "lucide-react";
 const ManageSubscription = () => {
   const router = useRouter();
   const [loading, setLoading] = useState<boolean>(false);
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [error, setError] = useState<string | null>(null);
 
   const redirectToCustomerPortal = async () => {

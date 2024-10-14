@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import ReactDOM from "react-dom/client";
 
 import {
   Column,
@@ -16,7 +15,7 @@ import {
 } from "@tanstack/react-table";
 
 import { InferSelectModel } from "drizzle-orm";
-import { projects, feedbacks } from "@/db/schema";
+import { feedbacks } from "@/db/schema";
 import {
   ChevronLeft,
   ChevronRight,

@@ -1,6 +1,6 @@
 "use server";
 import { db } from "@/db";
-import { auth, currentUser } from "@clerk/nextjs/server";
+import { auth } from "@clerk/nextjs/server";
 import { projects } from "@/db/schema";
 import { redirect } from "next/navigation";
 

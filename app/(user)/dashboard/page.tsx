@@ -6,7 +6,6 @@ import { eq } from "drizzle-orm";
 import { projects } from "@/db/schema";
 import { auth } from "@clerk/nextjs/server";
 import ProjectsList from "./projects-list";
-import { getSubscription } from "@/actions/userSubscriptions";
 import { maxFreeProjects } from "@/lib/payments";
 
 export default async function Page() {
