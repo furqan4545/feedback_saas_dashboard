@@ -11,7 +11,6 @@ type Props = {
 
 const SubscribeBtn = ({ price }: Props) => {
   const [loading, setLoading] = useState<boolean>(false);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [error, setError] = useState<string | null>(null);
 
   const handleCheckout = async (price: string) => {

@@ -4,7 +4,6 @@ import { db } from "@/db";
 import { subscriptions } from "@/db/schema";
 import { eq } from "drizzle-orm";
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export async function POST(req: Request) {
   const { userId } = auth();
 
