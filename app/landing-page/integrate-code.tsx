@@ -22,15 +22,19 @@ const IntegrateCode = () => {
   };
 
   return (
-    <section className="py-12">
+    <section className="py-8 sm:py-12">
       <div className="container mx-auto px-4">
         <Card>
           <CardHeader>
-            <CardTitle>Start Collecting Feedback</CardTitle>
+            <CardTitle className="text-xl sm:text-2xl">
+              Start Collecting Feedback
+            </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="mb-4">Embed the code in your site</p>
-            <pre className="bg-gray-100 p-4 rounded-md overflow-x-auto">
+            <p className="mb-4 text-sm sm:text-base">
+              Embed the code in your site
+            </p>
+            <pre className="bg-gray-100 p-2 sm:p-4 rounded-md overflow-x-auto text-xs sm:text-sm">
               <code>{codeSnippet}</code>
             </pre>
             <Button onClick={copyToClipboard} className="mt-4">

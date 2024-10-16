@@ -6,7 +6,7 @@ import IntegrateCode from "./integrate-code";
 
 const LandingPage = () => {
   return (
-    <div>
+    <div className="w-full">
       <Hero />
       <IntegrateCode />
       <HowItWorks />
