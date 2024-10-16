@@ -76,7 +76,7 @@ const Hero = () => {
         height={40}
         numSquares={50}
         maxOpacity={0.5}
-        duration={4}
+        duration={5}
         repeatDelay={0.5}
       />
       <div className="container mx-auto px-4 mb-24 mt-0 flex flex-col md:flex-row justify-center relative z-10">
