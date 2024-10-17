@@ -48,6 +48,7 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import PageHeader from "@/components/page-header";
 import { Metadata } from "next";
+import MicrosoftClarity from "@/components/MicrosoftClarity";
 
 export const metadata: Metadata = {
   title: "Feedbek",
@@ -100,6 +101,8 @@ export default function RootLayout({
             name="viewport"
             content="width=device-width, initial-scale=1.0"
           />
+
+          {/* Microsoft Clarity Tracking Code */}
         </head>
         <body className="flex flex-col min-h-screen">
           <PageHeader />
@@ -109,6 +112,7 @@ export default function RootLayout({
             </div>
           </main>
           <Toaster />
+          <MicrosoftClarity />
         </body>
       </html>
     </ClerkProvider>
