@@ -62,6 +62,29 @@ export const metadata: Metadata = {
     ],
     apple: [{ url: "/icon_logo.png" }],
   },
+  openGraph: {
+    type: "website",
+    url: "https://feedbek.com",
+    title: "Feedbek",
+    description:
+      "Build features that your users love. Integrate feedback widget in your app within 5 seconds.",
+    images: [
+      {
+        url: "/website_screenshot.png",
+        width: 1200,
+        height: 630,
+        alt: "Feedbek - collecting user Feedback Made Super Easy",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    site: "@iamfurqanalii",
+    title: "Feedbek",
+    description:
+      "Build features that your users love. Integrate feedback widget in your app within 5 seconds.",
+    images: ["/website_screenshot.png"],
+  },
 };
 
 export default function RootLayout({
