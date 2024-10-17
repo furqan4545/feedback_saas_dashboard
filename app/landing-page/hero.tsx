@@ -22,7 +22,7 @@ const Hero = () => {
         <div className="flex flex-col max-w-xl justify-center">
           <div className="mb-8">
             <h1 className="mb-5 text-5xl font-extrabold leading-tight">
-              Collect your feedbacks seamlessly
+              Start collecting feedbacks in seconds
             </h1>
             <p className="text-gray-500 texl-lg">
               Integrate Feedback Widget in 5 seconds and start collecting
