@@ -6,6 +6,7 @@ import {
   varchar,
   text,
   boolean,
+  timestamp,
 } from "drizzle-orm/pg-core";
 
 export const projects = pgTable("projects", {
@@ -47,3 +48,51 @@ export const subscriptions = pgTable("subscriptions", {
   stripeSubscriptionId: varchar("stripe_subscription_id", { length: 255 }),
   subscribed: boolean("subscribed").notNull().default(false),
 });
+
+// new stuff here...
+
+export const feedbackDetail = pgTable("feedback_detail", {
+  id: serial("id").primaryKey(),
+  projectId: integer("project_id").notNull(),
+  faceRating: integer("face_rating"),
+  feedbackMessage: text("feedback_message"),
+  feedbackSuggestion: text("feedback_suggestion"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export const feedbackDetailRelations = relations(feedbackDetail, ({ one }) => ({
+  project: one(projects, {
+    fields: [feedbackDetail.projectId],
+    references: [projects.id],
+  }),
+}));
+
+export const projectsRelationWithDetailFB = relations(projects, ({ many }) => ({
+  feedbackDetail: many(feedbackDetail),
+}));
+
+/// Feedback only facial expression
+
+export const feedbackOnlyFacialExpression = pgTable("feedback_only_face", {
+  id: serial("id").primaryKey(),
+  projectId: integer("project_id").notNull(),
+  faceRating: integer("face_rating"),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
+});
+
+export const feedbackOnlyFacialExpressionRelations = relations(
+  feedbackOnlyFacialExpression,
+  ({ one }) => ({
+    project: one(projects, {
+      fields: [feedbackOnlyFacialExpression.projectId],
+      references: [projects.id],
+    }),
+  })
+);
+
+export const projectsRelationWithOnlyFacialExpression = relations(
+  projects,
+  ({ many }) => ({
+    feedbackOnlyFacialExpression: many(feedbackOnlyFacialExpression),
+  })
+);
