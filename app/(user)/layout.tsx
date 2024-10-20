@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import { Viewport } from "next";
 
 export default function UserLayout({
   children,
@@ -11,3 +12,8 @@ export default function UserLayout({
     </div>
   );
 }
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};

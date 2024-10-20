@@ -19,13 +19,13 @@ export const pricingPlans: PricingPlan[] = [
     features: [
       "3 projects",
       "Unlimited users",
-      "2GB storage",
+      "1000 feedbacks",
       "Priority support",
     ],
   },
   {
     title: "Monthly",
-    price: 20.0,
+    price: 5.0,
     description: "For growing teams",
     isPopular: true,
     url: "/payments/subscribe?plan=monthly",
@@ -33,12 +33,12 @@ export const pricingPlans: PricingPlan[] = [
       "Unlimited projects",
       "Unlimited users",
       "5GB storage",
-      "Priority support",
+      "Unlimited feedbacks",
     ],
   },
   {
-    title: "Yearly",
-    price: 150.0,
+    title: "Life time access",
+    price: 50.0,
     description: "Upgrade to save more!",
     isPopular: false,
     url: "/payments/subscribe?plan=yearly",
@@ -53,7 +53,7 @@ export const pricingPlans: PricingPlan[] = [
 
 const PricingSection = () => {
   return (
-    <div className="text-center">
+    <div className="text-center mt-14">
       <h1 className="capitalize text-3xl">Pricing</h1>
       <h2 className="font-extrabold text-3xl mb-8 pt-3">
         Flexible Pricing to Fit Your Needs

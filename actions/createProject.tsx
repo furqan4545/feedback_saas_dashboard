@@ -11,14 +11,20 @@ export async function createProject(formData: FormData) {
     name: formData.get("name") as string,
     description: formData.get("description") as string,
     url: formData.get("url") as string,
+    widgetType: Number(formData.get("widgetType")),
     userId: userId as string,
   };
+
+  console.log("project: ", project);
 
   const [newProject] = await db
     .insert(projects)
     .values(project)
-    .returning({ insertedId: projects.id });
+    .returning({ insertedId: projects.id, widgetType: projects.widgetType });
 
   console.log("project id: ", newProject.insertedId);
-  redirect(`/projects/${newProject.insertedId}/instructions`);
+  // redirect(`/projects/${newProject.insertedId}/instructions`);
+  redirect(
+    `/projects/${newProject.insertedId}/instructions?widgetType=${newProject.widgetType}`
+  );
 }

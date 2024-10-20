@@ -14,6 +14,7 @@ export const projects = pgTable("projects", {
   name: varchar("name", { length: 255 }),
   description: varchar("description", { length: 255 }),
   url: varchar("url", { length: 255 }),
+  widgetType: integer("widget_type"),
   userId: varchar("user_id", { length: 255 }),
 });
 

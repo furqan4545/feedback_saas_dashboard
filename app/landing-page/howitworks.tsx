@@ -7,7 +7,7 @@ const HowItWorks = () => {
   return (
     <section
       id="how-it-works"
-      className="w-full py-12 md:py-24 lg:py-32 relative overflow-hidden"
+      className="w-full py-8 md:py-8 lg:py-12 relative overflow-hidden"
     >
       <DotPattern className="absolute inset-0 w-full h-full opacity-50" />
       <div className="container px-4 md:px-6 relative z-10">
@@ -16,7 +16,7 @@ const HowItWorks = () => {
         </h2>
         <div className="flex justify-center">
           <Image
-            src="/demo_3.gif"
+            src="/demo_v3.gif"
             alt="How It Works Demonstration"
             width={700}
             height={700}
