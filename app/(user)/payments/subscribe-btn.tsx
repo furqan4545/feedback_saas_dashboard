@@ -13,7 +13,6 @@ const SubscribeBtn = ({ price }: Props) => {
   const [error, setError] = useState<string | null>(null);
 
   const handleCheckout = async (price: string) => {
-    console.log("price:", price);
     setLoading(true);
     try {
       const { sessionId } = await fetch("/api/stripe/checkout-session", {

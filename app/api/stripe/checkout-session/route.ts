@@ -7,6 +7,7 @@ import { eq } from "drizzle-orm";
 
 export async function POST(req: Request) {
   const { price, quantity = 1 } = await req.json();
+  console.log("received price:", price);
 
   const { userId } = auth();
 
@@ -60,7 +61,7 @@ export async function POST(req: Request) {
   try {
     const session = await stripe.checkout.sessions.create({
       success_url: `${baseUrl}/payments/checkout-success`,
-      customer: customer?.id,
+      customer: customer.id,
       payment_method_types: ["card"],
       mode: "subscription",
       line_items: [
