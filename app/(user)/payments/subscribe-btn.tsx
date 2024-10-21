@@ -13,6 +13,7 @@ const SubscribeBtn = ({ price }: Props) => {
   const [error, setError] = useState<string | null>(null);
 
   const handleCheckout = async (price: string) => {
+    console.log("price : ", price);
     setLoading(true);
     try {
       const { sessionId } = await fetch("/api/stripe/checkout-session", {
@@ -20,7 +21,7 @@ const SubscribeBtn = ({ price }: Props) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ price }),
+        body: JSON.stringify({ price, quantity: 1 }),
       }).then((res) => res.json());
 
       const stripe = await getStripe();
