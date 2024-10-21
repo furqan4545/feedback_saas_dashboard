@@ -2,13 +2,10 @@ import { stripe } from "@/lib/stripe";
 import { auth } from "@clerk/nextjs/server";
 import { db } from "@/db";
 import { subscriptions } from "@/db/schema";
-
 import { eq } from "drizzle-orm";
 
 export async function POST(req: Request) {
   const { price, quantity = 1 } = await req.json();
-  console.log("received price:", price);
-
   const { userId } = auth();
 
   if (!userId) {
@@ -20,17 +17,14 @@ export async function POST(req: Request) {
   const userSubscription = await db.query.subscriptions.findFirst({
     where: eq(subscriptions.userId, userId),
   });
-
   let customer;
-
   if (userSubscription) {
-    // update the user subscription
-    // get the stripe customer id
+    // get the stripe customer
     customer = {
       id: userSubscription.stripeCustomerId,
     };
   } else {
-    // create a new user subscription
+    // create user subscription
     const customerData: {
       metadata: {
         dbId: string;
@@ -42,6 +36,7 @@ export async function POST(req: Request) {
     };
 
     const response = await stripe.customers.create(customerData);
+
     customer = { id: response.id };
 
     await db.insert(subscriptions).values({
@@ -49,7 +44,8 @@ export async function POST(req: Request) {
       stripeCustomerId: customer.id,
     });
   }
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://localhost:3000";
+
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
 
   if (!customer?.id) {
     return new Response(
@@ -61,7 +57,7 @@ export async function POST(req: Request) {
   try {
     const session = await stripe.checkout.sessions.create({
       success_url: `${baseUrl}/payments/checkout-success`,
-      customer: customer.id,
+      customer: customer?.id,
       payment_method_types: ["card"],
       mode: "subscription",
       line_items: [
@@ -71,25 +67,22 @@ export async function POST(req: Request) {
         },
       ],
     });
+
     if (session) {
       return new Response(JSON.stringify({ sessionId: session.id }), {
         status: 200,
       });
     } else {
       return new Response(
-        JSON.stringify({ error: "Failed to create checkout session" }),
-        {
-          status: 500,
-        }
+        JSON.stringify({ error: "Failed to create a session" }),
+        { status: 500 }
       );
     }
   } catch (error) {
-    console.log(error);
+    console.error(error);
     return new Response(
-      JSON.stringify({ error: "Failed to create checkout session" }),
-      {
-        status: 500,
-      }
+      JSON.stringify({ error: "Failed to create a session" }),
+      { status: 500 }
     );
   }
 }
