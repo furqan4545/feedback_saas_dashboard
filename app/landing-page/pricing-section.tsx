@@ -37,8 +37,8 @@ export const pricingPlans: PricingPlan[] = [
     ],
   },
   {
-    title: "Life time access",
-    price: 50.0,
+    title: "Life time access (first 100 users)",
+    price: 19.0,
     description: "Upgrade to save more!",
     isPopular: false,
     url: "/payments/subscribe?plan=yearly",
