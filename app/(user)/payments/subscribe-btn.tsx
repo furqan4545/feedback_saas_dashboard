@@ -6,9 +6,10 @@ import { Loader2 } from "lucide-react";
 
 type Props = {
   price: string;
+  isLifetime: boolean;
 };
 
-const SubscribeBtn = ({ price }: Props) => {
+const SubscribeBtn = ({ price, isLifetime }: Props) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -21,7 +22,7 @@ const SubscribeBtn = ({ price }: Props) => {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ price, quantity: 1 }),
+        body: JSON.stringify({ price, quantity: 1, isLifetime }),
       }).then((res) => res.json());
 
       const stripe = await getStripe();

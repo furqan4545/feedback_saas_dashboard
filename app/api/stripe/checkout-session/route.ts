@@ -5,7 +5,9 @@ import { subscriptions } from "@/db/schema";
 import { eq } from "drizzle-orm";
 
 export async function POST(req: Request) {
-  const { price, quantity = 1 } = await req.json();
+  // const { price, quantity = 1 } = await req.json();
+  // const { userId } = auth();
+  const { price, quantity = 1, isLifetime = false } = await req.json();
   const { userId } = auth();
 
   if (!userId) {
@@ -59,7 +61,8 @@ export async function POST(req: Request) {
       success_url: `${baseUrl}/payments/checkout-success`,
       customer: customer?.id,
       payment_method_types: ["card"],
-      mode: "subscription",
+      // mode: "subscription",
+      mode: isLifetime ? "payment" : "subscription",
       line_items: [
         {
           price,

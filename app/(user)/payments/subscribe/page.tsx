@@ -10,6 +10,7 @@ const page = ({
 }) => {
   const { plan } = searchParams;
 
+  const isLifetime = plan === "yearly";
   const planId = plan === "monthly" ? monthlyPlanId : yearlyPlanId;
 
   console.log("planId:", planId);
@@ -18,7 +19,7 @@ const page = ({
     <div className="flex border p-4 rounded-md flex-col">
       <h1 className="text-2xl font-bold">Start your subscription now:</h1>
       <div className="w-fit mt-3">
-        <SubscribeBtn price={planId} />
+        <SubscribeBtn price={planId} isLifetime={isLifetime} />
       </div>
     </div>
   );
