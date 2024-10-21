@@ -2,7 +2,6 @@
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { getStripe } from "@/lib/stripe-client";
-import { useRouter } from "next/navigation";
 import { Loader2 } from "lucide-react";
 
 type Props = {
@@ -14,6 +13,7 @@ const SubscribeBtn = ({ price }: Props) => {
   const [error, setError] = useState<string | null>(null);
 
   const handleCheckout = async (price: string) => {
+    console.log("price:", price);
     setLoading(true);
     try {
       const { sessionId } = await fetch("/api/stripe/checkout-session", {
