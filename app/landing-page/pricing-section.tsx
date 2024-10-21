@@ -1,4 +1,5 @@
 import PricingCard from "./pricing-card";
+import { monthlyPlanId, yearlyPlanId } from "@/lib/payments";
 
 export type PricingPlan = {
   title: string;
@@ -28,7 +29,8 @@ export const pricingPlans: PricingPlan[] = [
     price: 5.0,
     description: "For growing teams",
     isPopular: true,
-    url: "/payments/subscribe?plan=monthly",
+    // url: "/payments/subscribe?plan=monthly",
+    url: `/payments/subscribe?plan=${monthlyPlanId}`,
     features: [
       "Unlimited projects",
       "Unlimited users",
@@ -41,7 +43,8 @@ export const pricingPlans: PricingPlan[] = [
     price: 19.0,
     description: "Upgrade to save more!",
     isPopular: false,
-    url: "/payments/subscribe?plan=yearly",
+    // url: "/payments/subscribe?plan=yearly",
+    url: `/payments/subscribe?plan=${yearlyPlanId}`,
     features: [
       "Unlimited projects",
       "Unlimited users",
